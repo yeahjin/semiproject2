@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>네비게이션 바</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
+    <a class="navbar-brand" href="/products.do">쇼핑몰</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/products.do">상품 리스트</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cart">장바구니</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/customer-support">고객 센터</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto"> <!-- 오른쪽 항목들 -->
+            <li class="nav-item d-none d-md-block" th:if="${session.loginMember != null}">
+                <a class="nav-link"><strong>[[ ${session.loginMember.name} ]]</strong>님 반갑습니다.</a>
+            </li>
+            <li class="nav-item" th:if="${session.loginMember != null}">
+                <form action="/logout" method="post" class="nav-link" style="display: inline;">
+                    <button type="submit" class="btn btn-link" style="margin-top: 1.5px; margin-left: -12px; color: inherit; text-decoration: none; border: none;">
+                        로그아웃
+                    </button>
+                </form>
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
+</body>
+</html>

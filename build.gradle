@@ -4,7 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
-group = 'com.study'
+group = 'sessac.dev.sell'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -19,25 +19,42 @@ repositories {
 }
 
 dependencies {
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
     implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.7.6'
+
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+//    implementation 'org.slf4j:slf4j-api:1.7.36'
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//    implementation 'org.springframework.data:spring-data-commons:2.2.9'
     // lombok
     implementation 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
-    // annotations
+//    // annotations
     implementation 'org.jetbrains:annotations:22.0.0'
+
+
+//    implementation group: 'org.fluentd', name: 'fluent-logger', version: '0.3.4'
+////    implementation group: 'com.sndyuk', name: 'logback-more-appenders', version: '1.5.6'
+//    // https://mvnrepository.com/artifact/org.fluentd/fluent-logger
+//    implementation 'org.fluentd:fluent-logger:0.3.4'
+//    implementation 'ch.qos.logback:logback-classic:1.2.11'
+////
+//    implementation 'com.sndyuk:logback-more-appenders:1.5.6'
+////// https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder
+//    implementation 'net.logstash.logback:logstash-logback-encoder:6.6'
+//
+
 }
 
 tasks.named('test') {
