@@ -21,6 +21,9 @@
             <p th:text="${item.itemDetail}"></p>
             <p th:text="'재고: ' + ${item.stockNumber}"></p>
             <a href="/products.do" class="btn btn-secondary">목록으로 돌아가기</a>
+<!--            <form th:action="@{/cart/add/{itemId}(itemId=${item.id})}" method="post">-->
+<!--                <button type="submit" class="btn btn-secondary">장바구니에 담기</button>-->
+<!--            </form>-->
         </div>
     </div>
 </div>
