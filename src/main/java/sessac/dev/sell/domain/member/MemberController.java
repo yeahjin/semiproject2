@@ -72,6 +72,7 @@ public class MemberController {
             session.setAttribute("loginMember", member);
 
             // 로그에 넣기위한 정보 저장
+            session.setAttribute("id", member.getId());
             session.setAttribute("userId", member.getLoginId());
             session.setAttribute("userName", member.getName());
             session.setAttribute("userGender", member.getGender());
