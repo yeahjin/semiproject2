@@ -1,19 +1,52 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <property name="CONSOLE_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %highlight([%-3level]) %logger{5} - %msg %n" />
+
+    <property name="BASE_DIR" value="logger" />
+
+    <property name="CONSOLE_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %highlight([%-5level]) %logger{5} - %msg %n" />
     <property name="ROLLING_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS}  %logger{5} - %msg %n" />
 
     <!-- Console appender 설정 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <Pattern>${CONSOLE_PATTERN}</Pattern>
+            <pattern>${CONSOLE_PATTERN}</pattern>
         </encoder>
     </appender>
 
-    <logger name = "sessac.dev.sell.domain.item" level = "DEBUG" additive="false">
+    <!-- 파일로 출력 -->
+    <appender name="FILE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${BASE_DIR}/base_log.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${BASE_DIR}/base_log.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>1000000</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}\t: %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FLUENTD" class="ch.qos.logback.more.appenders.DataFluentAppender">
+        <tag>product_click</tag> <!-- Fluentd에서 사용할 태그 -->
+        <label>application_log</label> <!-- 로그의 레이블 -->
+<!--        <remoteHost>${FLUENTD_HOST}</remoteHost> &lt;!&ndash; Fluentd 호스트 &ndash;&gt;-->
+<!--        <remoteHost>localhost</remoteHost>-->
+        <port>${FLUENTD_PORT}</port> <!-- Fluentd 포트 -->
+    </appender>
+
+    <!-- Root logger 설정 -->
+    <root level="DEBUG">
         <appender-ref ref="STDOUT"/>
-    </logger>
-    <root level ="INFO">
-        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FLUENTD"/>
     </root>
+
+    <!-- DEBUG 로그를 FILE_LOG에만 기록 -->
+    <logger name="fileLog" level="DEBUG" additivity="false">
+        <appender-ref ref="FILE_LOG" />
+    </logger>
+
+    <!-- 특정 패키지에 대한 로거 설정 -->
+    <logger name="sessac.dev.sell.domain.item" level="INFO" additive="false">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE_LOG" />
+    </logger>
 </configuration>

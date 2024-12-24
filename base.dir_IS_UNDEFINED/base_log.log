@@ -1,0 +1,2 @@
+2024-12-23 15:02:09	: {event_type=product_click, user_id=yejin, price=299000, user_name=yeah, session_id=session_abc123, user_age=-25, user_gender=F}
+2024-12-23 15:02:14	: {event_type=product_click, user_id=yejin, price=299000, user_name=yeah, session_id=session_abc123, user_age=-25, user_gender=F}

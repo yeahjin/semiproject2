@@ -25,7 +25,7 @@ public interface ItemMapper {
      * 물건 리스트 조회
      * @return 게시글 리스트
      */
-    List<Map<String, Objects>> findAllItem (Map<String,Object> paramMap);
+    List<ItemDto> findAllItem ();
 
     /**
      * 물건 게시글 수 카운팅

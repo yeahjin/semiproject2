@@ -44,16 +44,11 @@ dependencies {
     implementation 'org.jetbrains:annotations:22.0.0'
 
 
-//    implementation group: 'org.fluentd', name: 'fluent-logger', version: '0.3.4'
-////    implementation group: 'com.sndyuk', name: 'logback-more-appenders', version: '1.5.6'
-//    // https://mvnrepository.com/artifact/org.fluentd/fluent-logger
-//    implementation 'org.fluentd:fluent-logger:0.3.4'
-//    implementation 'ch.qos.logback:logback-classic:1.2.11'
-////
-//    implementation 'com.sndyuk:logback-more-appenders:1.5.6'
-////// https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder
-//    implementation 'net.logstash.logback:logstash-logback-encoder:6.6'
-//
+
+    // https://mvnrepository.com/artifact/org.fluentd/fluent-logger
+    implementation 'org.fluentd:fluent-logger:0.3.4'
+    implementation 'ch.qos.logback:logback-classic:1.2.11'
+    implementation group: 'com.sndyuk', name: 'logback-more-appenders', version: '1.5.6'
 
 }
 
