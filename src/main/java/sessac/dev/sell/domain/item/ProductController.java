@@ -57,12 +57,14 @@ public class ProductController {
         Map<String, Object> logData = new HashMap<>();
 
         logData.put("user_id", userId); // 실제 사용자 ID로 대체
-        logData.put("session_id", "session_abc123"); // 실제 세션 ID로 대체
+//        logData.put("session_id", "session_abc123"); // 실제 세션 ID로 대체
         logData.put("event_type", "product_click");
-        logData.put("price", 299000);
+        logData.put("item_name", item.getItemName());
+        logData.put("item_detail", item.getItemDetail());
+        logData.put("price", item.getPrice());
         logData.put("user_name", userName);
         logData.put("user_gender", userGender);
-        logData.put("user_age", userAge);
+        logData.put("user_age", userAge*(-1));
 
         // 로그 기록
 //        log.info(logData.toString());
