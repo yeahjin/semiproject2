@@ -17,7 +17,10 @@ configurations {
 repositories {
     mavenCentral()
 }
-
+ext {
+    set('springCloudGcpVersion', "3.3.0")
+    set('springCloudVersion', "2021.0.5")
+}
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -50,8 +53,18 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.2.11'
     implementation group: 'com.sndyuk', name: 'logback-more-appenders', version: '1.5.6'
 
-}
+    //gcp pub/sub
+    implementation 'com.google.cloud:spring-cloud-gcp-starter-pubsub'
+    implementation 'org.springframework.integration:spring-integration-core'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
 
+}
+dependencyManagement {
+    imports {
+        mavenBom "com.google.cloud:spring-cloud-gcp-dependencies:${springCloudGcpVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
 tasks.named('test') {
     useJUnitPlatform()
 }
