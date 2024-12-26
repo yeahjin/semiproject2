@@ -23,6 +23,7 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 @Slf4j
+@CrossOrigin("*")
 public class ProductController {
 
 //    private final ItemService itemService;
