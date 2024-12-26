@@ -76,7 +76,7 @@ public class ProductController {
         pubSubTemplate.publish(topic, message);
         // 로그 기록
         F_Logger.debug(logData.toString());
-        System.out.println("hihihihihihi");
+
         return "item/product-detail"; // templates/item/product-detail.html을 반환
     }
 
