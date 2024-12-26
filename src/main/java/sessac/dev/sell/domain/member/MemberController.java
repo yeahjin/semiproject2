@@ -11,6 +11,7 @@ import java.time.Period;
 
 @Controller
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class MemberController {
 
     private final MemberService memberService;
