@@ -90,6 +90,13 @@ public class ProductController {
         return showMessageAndRedirect(message,model);
     }
 
+    @GetMapping("/")
+    public String openProductListFromRott(Model model) {
+        // 상품 리스트를 모델에 추가
+        model.addAttribute("items",itemService.findAllItem());
+        return "item/product"; // templates/product.html을 반환
+    }
+
     // 사용자에게 메시지를 전달하고, 페이지를 리다이렉트 한다.
     private String showMessageAndRedirect(final MessageDto params, Model model) {
         model.addAttribute("params", params);
