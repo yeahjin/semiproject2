@@ -33,7 +33,7 @@ public class ProductController {
 
     private static final Logger F_Logger = LoggerFactory.getLogger("fileLog");
 
-    private final PubSubTemplate pubSubTemplate;
+//    private final PubSubTemplate pubSubTemplate;
     private final ObjectMapper objectMapper;
 
     private final ItemService itemService;
@@ -71,9 +71,9 @@ public class ProductController {
         logData.put("user_gender", userGender);
         logData.put("user_age", userAge*(-1));
 
-        String message = objectMapper.writeValueAsString(logData);
-        log.info("message: " + message);
-        pubSubTemplate.publish(topic, message);
+//        String message = objectMapper.writeValueAsString(logData);
+//        log.info("message: " + message);
+//        pubSubTemplate.publish(topic, message);
         // 로그 기록
         F_Logger.debug(logData.toString());
 
